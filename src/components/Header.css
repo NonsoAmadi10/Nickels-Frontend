@@ -1,0 +1,42 @@
+.navbar
+{
+    background: '#fff';
+    color: "#000";
+}
+
+.brand
+{
+    font-family: 'Pacifico', cursive;
+    font-size: 30px;
+}
+
+
+.smalls
+{
+    background: linear-gradient(45deg, red, blue);
+    border: none;
+}
+.card-text 
+{
+    font-family: sans-serif;
+    font-weight: bold;
+}
+.rm-m 
+{
+    margin-top: -20px;
+}
+.bl 
+{
+    font-family: Verdana;
+    font-stretch: extra-condensed;
+    font-size: 1rem;
+}
+
+@media( max-width: 600px){
+   .dork
+   {
+       display: none;
+   }
+
+  
+}
