@@ -12,15 +12,22 @@ import {
 } from 'reactstrap';
 
 import LoginForm from '../components/auth/LoginForm'
+import RegisterForm from '../components/auth/registerForm';
 
 const Header = (props) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+
+  //Login Modal
   const [modal, setModal] = useState(false);
 
   const toggleModal = () => setModal(!modal);
+
+  //Register Modal
+  const [regmodal, setRegModal] = useState(false)
+  const toggleRegModal = () => setRegModal(!regmodal)
 
   return (
     <div>
@@ -33,7 +40,7 @@ const Header = (props) => {
               <NavLink onClick={toggleModal} className="m-1 btn btn-outline-info ">Login</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#" className="m-1 btn btn-primary text-light btn-default">Register</NavLink>
+              <NavLink onClick={toggleRegModal} className="m-1 btn btn-primary text-light btn-default">Register</NavLink>
             </NavItem>
           </Nav>
 
@@ -44,6 +51,13 @@ const Header = (props) => {
         <ModalHeader toggle={toggleModal} className="border-bottom-0"> Login</ModalHeader>
         <ModalBody>
           <LoginForm className="w-100 h-50" />
+        </ModalBody>
+      </Modal>
+
+      <Modal isOpen={regmodal} toggle={toggle}>
+        <ModalHeader toggle={toggleRegModal} className="border-bottom-0"> Login</ModalHeader>
+        <ModalBody>
+          <RegisterForm className="w-100 h-50" />
         </ModalBody>
       </Modal>
 

@@ -11,7 +11,7 @@ const RegisterForm = (props) => {
 
             <FormGroup>
 
-                <input name="email" placeholder="Email..." ref={register({ required: true, pattern: /^w+[+.w-]*@([w-]+.)*w+[w-]*.([a-z]{2,4}|d+)/i })} className="w-100 form-control" />
+                <input name="email" placeholder="Email..." ref={register({ required: true, pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/ })} className="w-100 form-control" />
                 {errors.email && <p className="text-danger"> Please Enter a Valid Email </p>}
             </FormGroup>
 

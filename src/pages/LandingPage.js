@@ -84,7 +84,7 @@ const Landing = () => {
                 </div>
             </section>
 
-            <section className="h-100 bg-white pb-4">
+            <section className="h-100 bg-white pb-4 mt-2">
                 <div className="p-2 d-flex flex-column align-items-md-center justify-content-sm-center h-25 mb-4">
                     <h2 className="text-info display-7 font-weight-bolder"> Invest in bits & on the go!</h2>
                     <p className="text-muted bl">Many investments are expensive, which makes it hard to get started.</p>
