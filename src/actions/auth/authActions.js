@@ -24,7 +24,7 @@ const registerUser = (data) => async dispatch => {
 			payload: "okay"
 		})
 
-		 dispatch(push('/dashboard'))
+		 dispatch(push('/login'))
 
 	} catch (err) {
 		console.log(err)

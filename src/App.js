@@ -9,7 +9,8 @@ import store, { history } from './store'
 // Use at the root of your app
 
 import LandingPage from './pages/LandingPage'
-import Dashboard from './components/dashboard/Dashboard'
+import Dashboard from './components/dashboard/Dashboard';
+import protectedLogin from './components/auth/protectedLogin';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
       <ConnectedRouter history={history}>
         <Switch>
           <Route exact path='/' component={LandingPage} />
-          <Route exact path='/dashboard' component ={Dashboard} />
+          <Route exact path='/login' component ={protectedLogin} />
         </Switch>
       </ConnectedRouter>
     </Provider>
