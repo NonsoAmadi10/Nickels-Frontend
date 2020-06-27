@@ -1,10 +1,11 @@
-import { REGISTER_FAILED, USER_LOADED, REGISTER_SUCCESS, LOGIN_SUCCESS, LOGIN_FAILED, LOGOUT } from '../../actions/auth/types';
+import { REGISTER_FAILED, USER_LOADED, REGISTER_SUCCESS, LOGIN_SUCCESS, LOGIN_FAILED, LOGOUT, LOADING } from '../../actions/auth/types';
 
 const initialState = {
     token: localStorage.getItem("token"),
     loading: false,
     user: null,
     isAuthenticated: null,
+    status: null
 }
 
 const isEmpty = (value) => {
@@ -18,6 +19,12 @@ export default function authReducer(state = initialState, action) {
     switch (type) {
         case REGISTER_SUCCESS:
         case LOGIN_SUCCESS:
+            return {
+                ...state,
+                status: payload
+            }
+
+        case LOADING: 
             return {
                 ...state,
                 loading: true

@@ -9,6 +9,7 @@ import store, { history } from './store'
 // Use at the root of your app
 
 import LandingPage from './pages/LandingPage'
+import Dashboard from './components/dashboard/Dashboard'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <ConnectedRouter history={history}>
         <Switch>
           <Route exact path='/' component={LandingPage} />
+          <Route exact path='/dashboard' component ={Dashboard} />
         </Switch>
       </ConnectedRouter>
     </Provider>

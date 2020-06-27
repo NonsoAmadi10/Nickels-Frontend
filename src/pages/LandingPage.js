@@ -142,10 +142,10 @@ const Landing = () => {
                 </div>
             </section>
 
-            <Modal isOpen={modal} toggle={toggle} className="p-2">
+            <Modal isOpen={modal} toggle={toggle} className="res-mod">
                 <ModalHeader toggle={toggleModal}> Create an account </ModalHeader>
                 <ModalBody className="h-50">
-                    <RegisterForm className="w-100" />
+                    <RegisterForm />
                 </ModalBody>
             </Modal>
         </div>

@@ -50,14 +50,14 @@ const Header = (props) => {
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggleModal} className="border-bottom-0"> Login</ModalHeader>
         <ModalBody>
-          <LoginForm className="w-100 h-50" />
+          <LoginForm />
         </ModalBody>
       </Modal>
 
       <Modal isOpen={regmodal} toggle={toggle}>
-        <ModalHeader toggle={toggleRegModal} className="border-bottom-0"> Login</ModalHeader>
+        <ModalHeader toggle={toggleRegModal}> Create An Account</ModalHeader>
         <ModalBody>
-          <RegisterForm className="w-100 h-50" />
+          <RegisterForm />
         </ModalBody>
       </Modal>
 

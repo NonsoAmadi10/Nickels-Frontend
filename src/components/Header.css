@@ -10,6 +10,10 @@
     font-size: 30px;
 }
 
+.w-100 
+{
+  width: 100%;
+}
 
 .smalls
 {
@@ -32,11 +36,21 @@
     font-size: 1rem;
 }
 
+.res-mod 
+{
+    width: 500px;
+}
+
 @media( max-width: 600px){
    .dork
    {
        display: none;
    }
-
   
+}
+
+@media (max-width: 500px){
+  .res-mod  {
+    width: 100%;
+  }
 }
