@@ -19,6 +19,7 @@ function App() {
         <Switch>
           <Route exact path='/' component={LandingPage} />
           <Route exact path='/login' component ={protectedLogin} />
+          <Route exact path='/dashboard' component ={Dashboard} />
         </Switch>
       </ConnectedRouter>
     </Provider>

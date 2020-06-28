@@ -14,14 +14,14 @@ const isEmpty = (value) => {
 }
 
 export default function authReducer(state = initialState, action) {
-    const { payload, type } = action;
+    const { payload, type, status } = action;
 
     switch (type) {
         case REGISTER_SUCCESS:
         case LOGIN_SUCCESS:
             return {
                 ...state,
-                status: payload
+                status: status || 'okay'
             }
 
         case LOADING: 

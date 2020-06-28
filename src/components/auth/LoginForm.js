@@ -1,12 +1,36 @@
-import React from 'react';
+import React, { useState} from 'react';
+import { useDispatch } from 'react-redux';
 import { useForm } from "react-hook-form";
-import { Button, Form, FormGroup } from 'reactstrap';
+import { Button, Form, FormGroup, Spinner } from 'reactstrap';
+import { loginUser } from '../../actions/auth/authActions';
 function LoginForm() {
 
+     const dispatch = useDispatch();
     const { register, handleSubmit, errors } = useForm();
-    const onSubmit = data => console.log(data);
+
+    const [loading, setLoading] = useState(false)
+
+    const onSubmit = data => {
+        try{
+            setLoading(true)
+             dispatch(loginUser(data))
+        }catch(err){
+            setLoading(!loading)
+        }
+
+    }
+    
     return (
-        <Form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+        {
+            loading ? <div className="d-flex align-items-center justify-content-center flex-column p-3">
+
+                    <Spinner />
+                    <p className="text-muted p-2"> Signing you In... </p>
+                </div > :
+
+
+                <Form onSubmit={handleSubmit(onSubmit)}>
 
             <FormGroup>
 
@@ -22,6 +46,9 @@ function LoginForm() {
                 <Button type="submit" className="btn-info w-100 text-center">Login</Button>
             </FormGroup>
         </Form>
+        }
+        </div>
+        
     )
 }
 

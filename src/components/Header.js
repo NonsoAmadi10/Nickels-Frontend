@@ -48,7 +48,7 @@ const Header = (props) => {
       </Navbar>
 
       <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggleModal} className="border-bottom-0"> Login</ModalHeader>
+        <ModalHeader toggle={toggleModal}> Login</ModalHeader>
         <ModalBody>
           <LoginForm />
         </ModalBody>

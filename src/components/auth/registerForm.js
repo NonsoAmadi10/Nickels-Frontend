@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import { useDispatch} from 'react-redux'
 import { useForm } from "react-hook-form";
-import { Button, Form, FormGroup } from 'reactstrap';
+import { Button, Form, FormGroup,Spinner } from 'reactstrap';
 import { registerUser } from '../../actions/auth/authActions';
-import { Spinner } from 'reactstrap'
 const RegisterForm = (props) => {
 
     const dispatch = useDispatch();

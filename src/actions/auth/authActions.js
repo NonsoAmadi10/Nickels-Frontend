@@ -1,5 +1,6 @@
-import { REGISTER_SUCCESS, REGISTER_FAILED, LOADING } from './types.js';
+import { REGISTER_SUCCESS, REGISTER_FAILED, LOADING, LOGIN_SUCCESS, LOGIN_FAILED, USER_LOADED } from './types.js';
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 import { push } from 'connected-react-router'
 import cogoToast from 'cogo-toast'
 
@@ -8,6 +9,50 @@ axios.defaults.baseURL = 'http://localhost:8000/api/v1'
 const setLoading =()=> async dispatch => dispatch({
 	type: LOADING
 })
+
+const loadUser = async (token)=> {
+	 	const {username} = await jwtDecode(token);
+
+	 	return username; 	
+}
+
+
+const loginUser =(data) =>async dispatch => {
+	try{
+		const logUser = await axios.post('/auth/login', data);
+		if(logUser.data) {
+			dispatch({
+				type: LOGIN_SUCCESS,
+				status: "okay"
+			});
+
+			const user = await loadUser(logUser.data.user.token);
+			
+			dispatch({
+	 		type: USER_LOADED,
+	 		payload: user
+	 	}); 
+
+	 	cogoToast.success(`Welcome Back ${user}!`)
+
+	 	dispatch(push('/dashboard'))
+}
+
+return;
+		
+	}catch(err){
+		if(err){
+			dispatch({
+				type: LOGIN_FAILED
+			})
+			cogoToast.error('Invalid User Credentials')
+			dispatch(push('/'))
+		}
+	}
+
+
+
+}
 
 const registerUser = (data) => async dispatch => {
 
@@ -21,13 +66,12 @@ const registerUser = (data) => async dispatch => {
 
 		await dispatch({
 			type: REGISTER_SUCCESS,
-			payload: "okay"
+			status: "okay"
 		})
 
-		 dispatch(push('/login'))
+		 dispatch(push(`/login?username=${sendRequest.data.user.username}`))
 
 	} catch (err) {
-		console.log(err)
 		
 			if(err.response.status === 400) {
 				const { username } = err.response.data.user;
@@ -38,7 +82,7 @@ const registerUser = (data) => async dispatch => {
 					type: REGISTER_FAILED
 				})
 
-				return push('/');
+				dispatch(push('/'));
 			};
 
 			if (err.response.status === 409){
@@ -47,7 +91,7 @@ const registerUser = (data) => async dispatch => {
 				dispatch({
 					type: REGISTER_FAILED
 				})
-				return push('/')
+				dispatch(push('/'))
 			}
 
 
@@ -61,5 +105,6 @@ const registerUser = (data) => async dispatch => {
 }
 
 export {
-	registerUser
+	registerUser,
+	loginUser
 }
