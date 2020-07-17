@@ -1,7 +1,41 @@
+@import '~antd/dist/antd.css';
+
 body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
     box-sizing: border-box;
     width: 100%;
+}
+
+.ant-layout-sider-children
+{
+  height: 100vh!important;
+}
+
+#components-layout-demo-responsive .logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+}
+
+.site-layout-sub-header-background {
+  background: #fff;
+}
+
+.site-layout-background {
+  background: #fff;
+}
+
+.row 
+{
+  flex-wrap:  nowrap!important;
+  margin: 30px!important;
+}
+
+@media screen and (max-width: 500px){
+  .m-sm-2 
+  {
+    margin: 10px!important;
+  }
 }
