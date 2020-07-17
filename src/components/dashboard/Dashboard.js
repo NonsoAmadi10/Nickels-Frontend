@@ -4,7 +4,7 @@ import { Layout, Card, Progress } from 'antd';
 import SideBar from '../sidebar/SideBar';
 import NavBar from './NavBar';
 import { Container, Row, Col } from 'reactstrap';
-import { DollarOutlined, UserOutlined, CreditCardOutlined, RotateRightOutlined } from '@ant-design/icons';
+import { DollarOutlined, UserOutlined, CreditCardOutlined, FileDoneOutlined } from '@ant-design/icons';
 
 const { Content, Footer } = Layout;
 
@@ -31,17 +31,17 @@ class Dashboard extends React.Component {
 						<Container>
 							<Row>
 								<Col xs="12" md="4" className="m-sm-2">
-									<Card title="Card title" bordered={false} loading={loading} className="shadow">
-										Card content
-						  </Card>
+									<Card bordered={false} loading={loading} className="shadow">
+										<CreditCardOutlined />
+									</Card>
 								</Col>
 								<Col sm="12" md="4" className="m-sm-2">
-									<Card title="Card title" bordered={false} loading={loading} className="shadow">
-										Card content
-						  </Card>
+									<Card bordered={false} loading={loading} className="shadow">
+										<FileDoneOutlined />
+									</Card>
 								</Col>
 								<Col sm="12" md="4" className="m-sm-2">
-									<Card title="Card title" bordered={true} loading={loading} className="shadow d-flex align-items-center justify-content-center flex-column rounded">
+									<Card bordered={true} loading={loading} className="shadow d-flex align-items-center justify-content-center flex-column rounded">
 										<Progress type="circle" percent={30} width={80} />
 									</Card>
 								</Col>
