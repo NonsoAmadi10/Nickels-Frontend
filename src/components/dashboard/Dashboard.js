@@ -1,10 +1,10 @@
 /*eslint-disable*/
 import React from 'react'
-import { Layout, Card, Progress } from 'antd';
+import { Layout, Card, Progress, Divider, Row, Col } from 'antd';
 import SideBar from '../sidebar/SideBar';
-import NavBar from './NavBar';
-import { Container, Row, Col } from 'reactstrap';
-import { DollarOutlined, UserOutlined, CreditCardOutlined, FileDoneOutlined } from '@ant-design/icons';
+import { Container } from 'reactstrap';
+import Balance from '../commons/Balance';
+import VirtualCard from '../commons/Card';
 
 const { Content, Footer } = Layout;
 
@@ -21,32 +21,25 @@ class Dashboard extends React.Component {
 	render() {
 
 		const { loading } = this.state;
+		const style = { background: '#0092ff', padding: '8px 0' };
 		return (
 
 			<Layout >
-				<SideBar />
-				<Layout>
-					<NavBar />
-					<Content style={{ margin: '24px', height: '100vh', backgroundColor: '#fdfdfd' }}>
-						<Container>
-							<Row>
-								<Col xs="12" md="4" className="m-sm-2">
-									<Card bordered={false} loading={loading} className="shadow">
-										<CreditCardOutlined />
-									</Card>
-								</Col>
-								<Col sm="12" md="4" className="m-sm-2">
-									<Card bordered={false} loading={loading} className="shadow">
-										<FileDoneOutlined />
-									</Card>
-								</Col>
-								<Col sm="12" md="4" className="m-sm-2">
-									<Card bordered={true} loading={loading} className="shadow d-flex align-items-center justify-content-center flex-column rounded">
-										<Progress type="circle" percent={30} width={80} />
-									</Card>
-								</Col>
-							</Row>
-						</Container>
+				<SideBar active={['1']} />
+				<Layout className="site-layout">
+					<Content style={{ margin: "10px", minHeight: '100vh', backgroundColor: 'inherit' }}>
+
+						<div className="p-3">
+							<h4 className="fine-text"> Overview </h4>
+
+							<hr className="w-100" />
+						</div>
+
+						<div>
+
+							<Balance />
+						</div>
+
 					</Content>
 					<Footer style={{ textAlign: 'center' }}>Nickels ©2020 Created by Houdini</Footer>
 				</Layout>

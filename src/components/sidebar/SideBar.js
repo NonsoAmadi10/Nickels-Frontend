@@ -1,47 +1,46 @@
-import React from 'react';
+import React, { useState, Fragment } from 'react';
 
 import { Layout, Menu } from 'antd';
-import { DollarOutlined, UserOutlined, CreditCardOutlined, RotateRightOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom'
+
+import { FaWallet } from 'react-icons/fa'
+import { GoDashboard } from 'react-icons/go';
+import { GiPiggyBank } from 'react-icons/gi';
+import { BsCreditCard } from 'react-icons/bs';
 
 const { Sider } = Layout;
 
-function SideBar() {
-    return (
-        <>
-            <Sider
-                breakpoint="lg"
-                collapsedWidth="0"
-                onBreakpoint={broken => {
-                    console.log(broken);
-                }}
-                onCollapse={(collapsed, type) => {
-                    console.log(collapsed, type);
-                }}
+function SideBar(props) {
+    const [collapsed, setCollapsed] = useState(false);
 
-                className="shadow"
-            >
-                <div className="m-3 text-center logo brand text-light"> Nickels </div>
-                <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} className="d-flex flex-column justify-content-center ">
-                    <hr className="w-100 bg-light" />
-                    <Menu.Item key="1" icon={<UserOutlined />} >
-                        Dashboard
+    const toggle = () => setCollapsed(!collapsed);
+
+    return (
+        <Fragment style={{
+            boxShadow: "13px 0px 26px 2px rgba(222,222,222,1)"
+        }}>
+            <Sider collapsible collapsed={collapsed} onCollapse={toggle}>
+                <div className="logo text-center p-3">
+                    {
+                        !collapsed ? <h3 className="navbar-brand brand text-light"> Nickels </h3> : <h3 className="brand text-light">N</h3>
+                    }
+                </div>
+                <Menu theme="dark" defaultSelectedKeys={'/dashboard'} mode="inline">
+                    <Menu.Item key="/dashboard" icon={<GoDashboard className="m-2" />}>
+                        <Link to="/dashboard">{!collapsed ? <span>Dashboard</span> : ''}</Link>
                     </Menu.Item>
-                    <hr className="w-100 bg-light" />
-                    <Menu.Item key="2" icon={<CreditCardOutlined />}>
-                        Wallet
-</Menu.Item>
-                    <hr className="w-100 bg-light" />
-                    <Menu.Item key="3" icon={<DollarOutlined />}>
-                        Savings
+                    <Menu.Item key="/wallet" icon={<FaWallet className="m-2" />}>
+                        <Link to="/wallet"> {!collapsed ? <span>Wallet</span> : ''}</Link>
                     </Menu.Item>
-                    <hr className="w-100 bg-light" />
-                    <Menu.Item key="4" icon={<RotateRightOutlined />} >
-                        Transactions
+                    <Menu.Item key="/savings" icon={<GiPiggyBank className="m-2" />}>
+                        <Link to="/savings"> {!collapsed ? <span>Savings</span> : ''}</Link>
                     </Menu.Item>
-                    <hr className="w-100 bg-light" />
+                    <Menu.Item key="/cards" icon={<BsCreditCard className="m-2" />}>
+                        <Link to="/cards"> {!collapsed ? <span>Cards</span> : ''}</Link>
+                    </Menu.Item>
                 </Menu>
             </Sider>
-        </>
+        </Fragment >
     )
 }
 
