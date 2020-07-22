@@ -1,11 +1,11 @@
-import { GET_WALLET, UPDATE_WALLET, WALLET_FAILED } from './types';
+import { GET_WALLET, WALLET_FAILED } from './types';
 import axios from 'axios';
 import { push } from 'connected-react-router'
 import cogoToast from 'cogo-toast';
 
-//axios.defaults.baseURL = 'https://nickelsbackend.herokuapp.com/api/v1';
+axios.defaults.baseURL = 'https://nickelsbackend.herokuapp.com/api/v1';
 
-axios.defaults.baseURL = 'http://127.0.0.1:8000/api/v1';
+//axios.defaults.baseURL = 'http://127.0.0.1:8000/api/v1';
 
 const getWallet = () => async dispatch => {
     try {
@@ -27,7 +27,7 @@ const getWallet = () => async dispatch => {
             dispatch({
                 type: WALLET_FAILED
             })
-            cogoToast.error('Invalid User Credentials')
+            cogoToast.error('Invalid User Credentials! Log In Please')
             dispatch(push('/'))
         }
     }
