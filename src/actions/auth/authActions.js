@@ -4,7 +4,8 @@ import jwtDecode from 'jwt-decode';
 import { push } from 'connected-react-router'
 import cogoToast from 'cogo-toast'
 
-axios.defaults.baseURL = 'https://nickelsbackend.herokuapp.com/api/v1'
+//axios.defaults.baseURL = 'https://nickelsbackend.herokuapp.com/api/v1';
+axios.defaults.baseURL = 'http://127.0.0.1:8000/api/v1';
 
 const setLoading = () => async dispatch => dispatch({
 	type: LOADING
@@ -25,6 +26,8 @@ const loginUser = (data) => async dispatch => {
 				type: LOGIN_SUCCESS,
 				status: "okay"
 			});
+
+			axios.defaults.headers['Authorization'] = `Token ${logUser.data.user.token}`;
 
 			const user = await loadUser(logUser.data.user.token);
 

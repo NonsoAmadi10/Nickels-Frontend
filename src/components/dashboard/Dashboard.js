@@ -2,9 +2,10 @@
 import React from 'react'
 import { Layout, Card, Progress, Divider, Row, Col } from 'antd';
 import SideBar from '../sidebar/SideBar';
-import { Container } from 'reactstrap';
+import { connect } from 'react-redux';
 import Balance from '../commons/Balance';
 import VirtualCard from '../commons/Card';
+import { getWallet } from '../../actions/wallets/walletActions';
 
 const { Content, Footer } = Layout;
 
@@ -14,8 +15,9 @@ class Dashboard extends React.Component {
 		loading: true,
 	};
 
-	componentDidMount() {
-		setTimeout(() => this.setState({ loading: false }), 3000)
+	async componentDidMount() {
+		setTimeout(() => this.setState({ loading: false }), 3000);
+		await this.props.getWallet()
 	}
 
 	render() {
@@ -49,4 +51,4 @@ class Dashboard extends React.Component {
 	}
 }
 
-export default Dashboard;
+export default connect(null, { getWallet })(Dashboard);
